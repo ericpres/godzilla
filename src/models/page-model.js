@@ -9,7 +9,7 @@ class PageModel {
       baseURL: this.baseUrl,
       timeout: DEFAULT_TIMEOUT
     })
-  }
+  } // constructor
 
   async get (url) {
     const result = await this.ai.get(url)
