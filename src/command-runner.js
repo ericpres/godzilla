@@ -1,6 +1,6 @@
 // command-runner
-const TextCommand = require('./models/text-command')
-const TextManipulator = require('./models/text-manipulator')
+const TextCommand = require('./text-command')
+const TextManipulator = require('./text-manipulator')
 const commandRunner = (text, command) => {
   const textCommand = new TextCommand(command)
   const textManipulator = new TextManipulator(text)

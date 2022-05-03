@@ -1,8 +1,6 @@
 const chai = require('chai')
-chai.use(require('chai-as-promised'))
-chai.use(require('sinon-chai'))
 const expect = chai.expect
-const TextManipulator = require('../../src/models/text-manipulator')
+const TextManipulator = require('../src/text-manipulator')
 
 describe('TextManipulator', () => {
   let textMaipulator
@@ -120,4 +118,24 @@ describe('TextManipulator', () => {
       })
     })
   }) // x
+  describe('f', () => {
+    it('should find the first l', () => {
+      expect(textMaipulator.f('l').cursor).to.equal(2)
+      expect(textMaipulator.f('l').currentChar).to.equal('l')
+    })
+    it('should find the 2nd occurance of l', () => {
+      expect(textMaipulator.f(2, 'l').cursor).to.equal(3)
+      expect(textMaipulator.f(2, 'l').currentChar).to.equal('l')
+    })
+    it('should not find the character', () => {
+      expect(textMaipulator.f('z').cursor).to.equal(0)
+    })
+    it('should find the first r', () => {
+      expect(textMaipulator.f('r').cursor).to.equal(8)
+    })
+    it('should find the first r and stay put because there is not a 2nd one', () => {
+      expect(textMaipulator.f(2, 'r').cursor).to.equal(8)
+      expect(textMaipulator.f(2, 'r').currentChar).to.equal('r')
+    })
+  }) // f
 })

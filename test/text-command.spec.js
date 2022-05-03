@@ -1,8 +1,6 @@
 const chai = require('chai')
-chai.use(require('chai-as-promised'))
-chai.use(require('sinon-chai'))
 const expect = chai.expect
-const TextCommand = require('../../src/models/text-command')
+const TextCommand = require('../src/text-command')
 
 describe('TextCommand', () => {
   describe('parseCommands', () => {
@@ -53,6 +51,19 @@ describe('TextCommand', () => {
         { command: 'r', count: 1, char: 'L' },
         { command: 'h', count: 7, char: undefined },
         { command: 'r', count: 2, char: 'L' }
+      ])
+    })
+    it('9lfcrLx2h2fZ2l', () => {
+      const textCommand = new TextCommand('9lfcrLx2h2fZ9x2l')
+      expect(textCommand.parseCommands()).to.deep.equal([
+        { command: 'l', count: 9, char: undefined},
+        { command: 'f', count: 1, char: 'c' },
+        { command: 'r', count: 1, char: 'L' },
+        { command: 'x', count: 1, char: undefined },
+        { command: 'h', count: 2, char: undefined },
+        { command: 'f', count: 2, char: 'Z' },
+        { command: 'x', count: 9, char: undefined },
+        { command: 'l', count: 2, char: undefined }
       ])
     })
     it('999999999999999999999999999lr0', () => {

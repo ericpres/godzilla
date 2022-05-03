@@ -1,5 +1,6 @@
-const COMMAND_SEPARATOR_RX = /(\d*r.|\d*h|\d*l)/gm
-const COMMAND_PARSER_RX = /(\d*)(r.|h|l)/
+// text-command.js
+const COMMAND_SEPARATOR_RX = /(\d*r.|\d*f.|\d*h|\d*l|\d*x)/gm
+const COMMAND_PARSER_RX = /(\d*)(r.|f.|h|l|x)/
 class TextCommand {
   constructor (str) {
     this.str = str
@@ -14,7 +15,7 @@ class TextCommand {
       return {
         count: Number(command[1] || 1),
         command: command[2].charAt(0),
-        char: command[2].charAt(0) === 'r' ? command[2].charAt(1) : undefined
+        char: command[2].charAt(0) === 'r' || command[2].charAt(0) === 'f' ? command[2].charAt(1) : undefined
       }
     })
     return result

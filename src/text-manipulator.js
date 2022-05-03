@@ -49,6 +49,21 @@ class TextManipulator {
     return this
   } // r
 
+  // f(<char>) - one parameter means find the next occurce of the character
+  // f(<count>, <char>)
+  f (...args) {
+    const char = args.length === 2 ? args[1] : args[0]
+    let count = args.length === 2 ? args[0] : 1
+    let newCursor
+    do {
+      newCursor = this.str.indexOf(char, this.cursor + 1)
+      if (newCursor >= 0) {
+        this.cursor = newCursor
+      }
+      count = count - 1
+    } while (newCursor >= 0 && count > 0)
+    return this
+  } // f
   get currentChar() {
     return this.str[this.cursor]
   }

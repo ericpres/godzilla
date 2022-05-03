@@ -1,6 +1,4 @@
 const chai = require('chai')
-chai.use(require('chai-as-promised'))
-chai.use(require('sinon-chai'))
 const expect = chai.expect
 const commandRunner = require('../src/command-runner')
 
@@ -54,6 +52,12 @@ describe('commandRunner', () => {
       expect(commandRunner('Hello World', '999rs')).to.deep.equal({
         text: 'sssssssssss',
         cursor: 10
+      })
+    })
+    it('fWrw10hrhf x -> helloworld 5', () => {
+      expect(commandRunner('Hello World', 'fWrw10hrhf x')).to.deep.equal({
+        text: 'helloworld',
+        cursor: 5
       })
     })
   }) // commands with count parameters
